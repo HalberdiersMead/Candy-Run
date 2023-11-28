@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     public float speed=100f;
     public float jumpPower = 50f;
     private float lastY;
-    private int score;
-
+    public int score { get; private set; }
+    public TMP_Text scoreTxt;
     //Keep player data
     public static Player Instance;
 
@@ -38,8 +38,9 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         lastY = transform.position.y;
         bonk = GetComponent<AudioSource>();
+        scoreTxt.text = "Score: " + score.ToString();
 
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(this.gameObject);
             return;
@@ -85,7 +86,15 @@ public class Player : MonoBehaviour
 
 
     }
+
+    public void ChangeScore(int scoreValue)
+    {
+        score += scoreValue;
+        scoreTxt.text = "Score: " + score.ToString();
+    }
     //jumping method
+
+
     private void Jump()
     {
         //jumping
@@ -131,12 +140,12 @@ public class Player : MonoBehaviour
         if (collision.tag=="Pickup")
         {
             canDoubleJump = true;
-            score = score + 100;
+            ChangeScore(100);
         }
         //if you finish lvl 1 you get sent to the next level, if lvl 2 you go to the level select
         if (collision.tag == "Finish")
         {
-            score = score + 1000;
+            ChangeScore(1000);
             if (sceneName == "LevelOne")
             {
                 canDoubleJump = false;
