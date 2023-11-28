@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float speed=100f;
     public float jumpPower = 50f;
     private float lastY;
+    private int score;
 
     //Keep player data
     public static Player Instance;
@@ -130,10 +131,12 @@ public class Player : MonoBehaviour
         if (collision.tag=="Pickup")
         {
             canDoubleJump = true;
+            score = score + 100;
         }
         //if you finish lvl 1 you get sent to the next level, if lvl 2 you go to the level select
         if (collision.tag == "Finish")
         {
+            score = score + 1000;
             if (sceneName == "LevelOne")
             {
                 canDoubleJump = false;
