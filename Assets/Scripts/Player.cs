@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float lastY;
     public int score { get; private set; }
     public TMP_Text scoreTxt;
+    private Vector3 respawnPoint;
     //Keep player data
     public static Player Instance;
 
@@ -37,16 +38,21 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         lastY = transform.position.y;
+        respawnPoint = transform.position;
         bonk = GetComponent<AudioSource>();
+        score = 0;
         scoreTxt.text = "Score: " + score.ToString();
-
         if (Instance != null)
         {
             Destroy(this.gameObject);
             return;
         }
-        Instance = this;
-        GameObject.DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Instance = this;
+            GameObject.DontDestroyOnLoad(this.gameObject);
+        }
+        
     }
 
     private void Update()
@@ -81,7 +87,7 @@ public class Player : MonoBehaviour
         //if they fall past certain threshold gameover
         if (lastY <= -10)
         {
-            SceneManager.LoadScene("LevelSelect");
+            transform.position = respawnPoint;
         }
 
 
@@ -141,6 +147,21 @@ public class Player : MonoBehaviour
         {
             canDoubleJump = true;
             ChangeScore(100);
+        }
+        if (collision.tag == "collectable")
+        {
+            ChangeScore(50);
+        }
+        //change checkpoint
+        if (collision.tag == "Checkpoint")
+        {
+            //attempt to gain points only when you cross the checkpoint once
+            //if (respawnPoint != transform.position)
+            //{
+            //    ChangeScore(500);
+            //}
+            respawnPoint = transform.position;
+            
         }
         //if you finish lvl 1 you get sent to the next level, if lvl 2 you go to the level select
         if (collision.tag == "Finish")

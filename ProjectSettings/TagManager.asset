@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - Enemy
   - Pickup
+  - Checkpoint
+  - collectable
   layers:
   - Default
   - TransparentFX
