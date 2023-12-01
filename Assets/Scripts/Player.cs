@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float speed=100f;
     public float jumpPower = 50f;
     private float lastY;
+    [SerializeField] private Health hp;
     public int score { get; private set; }
     public TMP_Text scoreTxt;
     private Vector3 respawnPoint;
@@ -42,16 +43,24 @@ public class Player : MonoBehaviour
         bonk = GetComponent<AudioSource>();
         score = 0;
         scoreTxt.text = "Score: " + score.ToString();
-        if (Instance != null)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            Instance = this;
-            GameObject.DontDestroyOnLoad(this.gameObject);
-        }
+        //if (PlayerPrefs.GetInt("previousHealth") != null)
+        //{
+        //    PlayerPrefs.SetInt("previousHealth", hp.currentHealth);
+        Debug.Log(PlayerPrefs.GetInt("HP"));
+        //} else
+        //{
+
+        //}
+        //if (Instance != null)
+        //{
+        //    Destroy(this.gameObject);
+        //    return;
+        //}
+        //else
+        //{
+        //    Instance = this;
+        //    GameObject.DontDestroyOnLoad(this.gameObject);
+        //}
         
     }
 
@@ -166,6 +175,8 @@ public class Player : MonoBehaviour
         //if you finish lvl 1 you get sent to the next level, if lvl 2 you go to the level select
         if (collision.tag == "Finish")
         {
+            //PlayerPrefs.SetInt("previousHealth", hp.currentHealth);
+            //Debug.Log(PlayerPrefs.GetInt("previousHealth"));
             ChangeScore(1000);
             if (sceneName == "LevelOne")
             {

@@ -9,22 +9,36 @@ public class Health : MonoBehaviour
     public int startHealth = 3;
     public int currentHealth { get; private set; }
 
-    public int CurrentHealth
-    {
-        get { return currentHealth; }
-        
-    }
+    
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startHealth;
+        //check if player already has hp
+        if (!PlayerPrefs.HasKey("HP"))
+        {
+            currentHealth = startHealth;
+        } 
+        else
+        {
+            currentHealth = PlayerPrefs.GetInt("HP");
+        }
+        
     }
-
+    public int CurrentHealth
+    {
+        
+        get { return currentHealth; }
+        
+    }
     public bool ChangeHealth(int changeValue)
     {
         //optimize like we did in class
         currentHealth=Mathf.Min(startHealth, currentHealth+changeValue);
+        PlayerPrefs.SetInt("HP", currentHealth);
+        //change current value of stored if altered in scenes
         if (currentHealth <= 0) {    
             Die();
             return true;
