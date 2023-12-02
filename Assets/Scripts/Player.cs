@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float speed=100f;
     public float jumpPower = 50f;
     private float lastY;
-    [SerializeField] private Health hp;
     public int score { get; private set; }
     public TMP_Text scoreTxt;
     private Vector3 respawnPoint;
@@ -41,27 +40,14 @@ public class Player : MonoBehaviour
         lastY = transform.position.y;
         respawnPoint = transform.position;
         bonk = GetComponent<AudioSource>();
-        score = 0;
+        if (PlayerPrefs.HasKey("Score"))
+        {
+            score = PlayerPrefs.GetInt("Score");
+        } else
+        {
+            score = 0;
+        }
         scoreTxt.text = "Score: " + score.ToString();
-        //if (PlayerPrefs.GetInt("previousHealth") != null)
-        //{
-        //    PlayerPrefs.SetInt("previousHealth", hp.currentHealth);
-        Debug.Log(PlayerPrefs.GetInt("HP"));
-        //} else
-        //{
-
-        //}
-        //if (Instance != null)
-        //{
-        //    Destroy(this.gameObject);
-        //    return;
-        //}
-        //else
-        //{
-        //    Instance = this;
-        //    GameObject.DontDestroyOnLoad(this.gameObject);
-        //}
-        
     }
 
     private void Update()
@@ -175,9 +161,22 @@ public class Player : MonoBehaviour
         //if you finish lvl 1 you get sent to the next level, if lvl 2 you go to the level select
         if (collision.tag == "Finish")
         {
-            //PlayerPrefs.SetInt("previousHealth", hp.currentHealth);
-            //Debug.Log(PlayerPrefs.GetInt("previousHealth"));
             ChangeScore(1000);
+            PlayerPrefs.SetInt("Score", score);
+            // attempt to make individual high score per level.
+            //Debug.Log(PlayerPrefs.GetInt("previousHealth"));
+            //if (PlayerPrefs.HasKey(sceneName))
+            //{
+            //    if (score > PlayerPrefs.GetInt(sceneName))
+            //    {
+            //        PlayerPrefs.SetInt(sceneName, score);
+            //    }
+            //}
+            //else
+            //{
+            //    PlayerPrefs.SetInt(sceneName, score);
+            //}
+            //Debug.Log(PlayerPrefs.GetInt(sceneName));
             if (sceneName == "LevelOne")
             {
                 canDoubleJump = false;

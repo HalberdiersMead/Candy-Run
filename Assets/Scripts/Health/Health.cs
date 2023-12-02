@@ -17,14 +17,16 @@ public class Health : MonoBehaviour
     void Start()
     {
         //check if player already has hp
-        if (!PlayerPrefs.HasKey("HP"))
-        {
-            currentHealth = startHealth;
-        } 
-        else
-        {
-            currentHealth = PlayerPrefs.GetInt("HP");
-        }
+        //if (!PlayerPrefs.HasKey("HP"))
+        //{
+        //    PlayerPrefs.SetInt("HP", startHealth);
+        //    Debug.Log("Health is " + PlayerPrefs.GetInt("HP"));
+        //} 
+        //else
+        //{
+        //    currentHealth = PlayerPrefs.GetInt("HP");
+        //}
+        currentHealth = startHealth;
         
     }
     public int CurrentHealth
@@ -37,7 +39,7 @@ public class Health : MonoBehaviour
     {
         //optimize like we did in class
         currentHealth=Mathf.Min(startHealth, currentHealth+changeValue);
-        PlayerPrefs.SetInt("HP", currentHealth);
+       // PlayerPrefs.SetInt("HP", currentHealth);
         //change current value of stored if altered in scenes
         if (currentHealth <= 0) {    
             Die();

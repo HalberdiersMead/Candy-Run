@@ -417,15 +417,19 @@ PrefabInstance:
       objectReference: {fileID: 1234133009}
     - target: {fileID: 4118836832357692099, guid: 189f7a8dec536af4c910bd491d539c50, type: 3}
       propertyPath: m_LocalScale.x
-      value: 34
+      value: 43.0932
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118836832357692099, guid: 189f7a8dec536af4c910bd491d539c50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15.762392
       objectReference: {fileID: 0}
     - target: {fileID: 4118836832357692099, guid: 189f7a8dec536af4c910bd491d539c50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1376
+      value: 0.2419
       objectReference: {fileID: 0}
     - target: {fileID: 4118836832357692099, guid: 189f7a8dec536af4c910bd491d539c50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.025915444
+      value: -0.1018
       objectReference: {fileID: 0}
     - target: {fileID: 4118836832357692099, guid: 189f7a8dec536af4c910bd491d539c50, type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,7 +1003,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500816758}
-  - component: {fileID: 1500816759}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -1022,18 +1025,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1500816759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500816757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6529e5edbe1b8b4fac3ec2692419a29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1519914202
 PrefabInstance:
   m_ObjectHideFlags: 0

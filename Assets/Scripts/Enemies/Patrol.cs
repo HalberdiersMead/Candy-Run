@@ -8,7 +8,7 @@ public class Patrol : MonoBehaviour
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
-    private Animator anim;
+    
     private Transform currentPoint;
     public float speed;
 
@@ -16,9 +16,9 @@ public class Patrol : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+       
         currentPoint = pointB.transform;
-        anim.SetBool("isRunning", true);
+        
         //set beginning paramaters
 
 
