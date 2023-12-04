@@ -8,7 +8,8 @@ public class Patrol : MonoBehaviour
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
-    
+    public bool horizontal = false;
+    public bool vertical = true;
     private Transform currentPoint;
     public float speed;
 
@@ -27,25 +28,40 @@ public class Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 point = currentPoint.position - transform.position;
-        if(currentPoint== pointB.transform)
+        if (horizontal == true)
         {
-            rb.velocity = new Vector2(speed, 0);
+            if (currentPoint == pointB.transform)
+            {
+                rb.velocity = new Vector2(speed, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-speed, 0);
+            }
         }
-        else
+        if (vertical == true)
         {
-            rb.velocity = new Vector2(-speed, 0);
+            if (currentPoint == pointB.transform)
+            {
+                rb.velocity = new Vector2(0, speed);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, -speed);
+            }
         }
 
         if(Vector2.Distance(transform.position, currentPoint.position)< 0.5f && currentPoint == pointB.transform)
         {
-            Flip();
+            
             currentPoint = pointA.transform;
+            
         }
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
-            Flip();
+            
             currentPoint = pointB.transform;
+            
         }
     }
 

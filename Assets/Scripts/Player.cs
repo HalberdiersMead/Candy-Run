@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     private float lastY;
     public int score { get; private set; }
     public TMP_Text scoreTxt;
-    private Vector3 respawnPoint;
+    public Vector3 respawnPoint { get; private set; }
+
     //Keep player data
     public static Player Instance;
 
