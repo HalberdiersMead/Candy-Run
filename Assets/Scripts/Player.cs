@@ -134,6 +134,10 @@ public class Player : MonoBehaviour
             }
             
         }
+        if (collision.gameObject.tag == "WeakSpot")
+        {
+            ChangeScore(200);
+        }
     }
     // sets double jump to true on pickup
     private void OnTriggerEnter2D(Collider2D collision)

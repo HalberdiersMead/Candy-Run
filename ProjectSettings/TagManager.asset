@@ -9,6 +9,8 @@ TagManager:
   - Pickup
   - Checkpoint
   - collectable
+  - Contact
+  - WeakSpot
   layers:
   - Default
   - TransparentFX
