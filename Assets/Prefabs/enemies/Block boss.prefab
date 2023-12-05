@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3743626139406518150}
   - component: {fileID: 1990088531212111189}
+  - component: {fileID: 5120125209493574098}
   m_Layer: 0
-  m_Name: Weakpoint
+  m_Name: hitbox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,6 +78,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30290377, y: 0.26869762}
   m_EdgeRadius: 0
+--- !u!50 &5120125209493574098
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820626788847751614}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3232426443963151787
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +120,10 @@ GameObject:
   - component: {fileID: 556340532847347801}
   - component: {fileID: 3369774552729161797}
   - component: {fileID: 6327461508254479447}
+  - component: {fileID: 4638414696791617563}
   m_Layer: 0
   m_Name: Block boss
-  m_TagString: Enemy
+  m_TagString: WeakSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,3 +315,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: -1
+--- !u!114 &4638414696791617563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232426443963151787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23727a980d923c942b55cc203b06d89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 122552982989952566, guid: 966fcc405db8bac4e82baabcd2b49972, type: 3}
+  player: {fileID: 0}
+  targetTransform: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  delayBetweenSpawns: 2
+  soundEffect: {fileID: 0}

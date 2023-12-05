@@ -9,14 +9,6 @@ public class ButtonsFunctions : MonoBehaviour
     {
         if(levelName=="MainMenu" || levelName=="LevelSelect")
         {
-            if (PlayerPrefs.HasKey("Score"))
-            {
-                if(PlayerPrefs.GetInt("HighScore")< PlayerPrefs.GetInt("Score"))
-                {
-                    PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
-                }
-                    
-            }
             PlayerPrefs.SetInt("Score", 0);
         }
         SceneManager.LoadScene(levelName);
@@ -25,7 +17,7 @@ public class ButtonsFunctions : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        PlayerPrefs.DeleteAll();
+        
 #else
 Application.Quit();
 #endif

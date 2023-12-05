@@ -168,6 +168,17 @@ public class Player : MonoBehaviour
         {
             ChangeScore(1000);
             PlayerPrefs.SetInt("Score", score);
+            if (PlayerPrefs.HasKey("HighScore"))
+            {
+                if(PlayerPrefs.GetInt("Score")> PlayerPrefs.GetInt("HighScore"))
+                {
+                    PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+            }
             // attempt to make individual high score per level.
             //Debug.Log(PlayerPrefs.GetInt("previousHealth"));
             //if (PlayerPrefs.HasKey(sceneName))
@@ -189,6 +200,12 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene("LevelTwo");
             }
             if (sceneName == "LevelTwo")
+            {
+                canDoubleJump = false;
+                rb.transform.position = new Vector2(-6, -1);
+                SceneManager.LoadScene("LevelThree");
+            }
+            if (sceneName == "LevelThree")
             {
                 canDoubleJump = false;
                 SceneManager.LoadScene("LevelSelect");

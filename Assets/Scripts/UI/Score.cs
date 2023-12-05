@@ -6,16 +6,22 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    private int score = 0;
-    [SerializeField] private Player playerScore;
-    [SerializeField] private TMP_Text scoreTxt;
+    private int score;
+    public TMP_Text hstxt;
+
 
     private void Start()
     {
-        score = playerScore.score;
-    }
-    private void Update()
-    {
-        scoreTxt.text = "Score: " + score.ToString();
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            score = PlayerPrefs.GetInt("HighScore");
+
+        }
+        else
+        {
+            score = 0;
+        }
+        hstxt.text = "Highscore: " + score.ToString();
     }
 }
+
