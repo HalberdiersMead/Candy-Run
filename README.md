@@ -26,3 +26,5 @@ If there is time I would also like to implement;
 
 •	Gallery of powerups and what they do
 
+Final report.
+Of the deliverables I promised I was able to create a score system, a high score for the game in total, checkpoints, obstacles(which I will count as an enemy), an enemy the player can kill (boss enemy), and new collectables purely for points. I was not able to properly implement new abilities or a respawn amount without causing a large amount of glitches. As such I plan to work on those from now onward.
